@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Security research, application security, API security, cloud security and technical write-ups by Nikhil Nair."
+  />
+
+  <title>Security Research | Nikhil Nair</title>
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    /* =========================
+       VARIABLES
+    ========================== */
+
+    :root {
+      --background: #05070a;
+      --surface: rgba(10, 14, 19, 0.82);
+
+      --border: rgba(255, 255, 255, 0.09);
+
+      --text: #f2f5f7;
+      --muted: #8b949e;
+
+      --green: #39ff88;
+
+      --green-soft: rgba(57, 255, 136, 0.10);
+    }
+
+
+    /* =========================
+       BODY
+    ========================== */
+
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(57, 255, 136, 0.035),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(57, 255, 136, 0.025),
+          transparent 30%
+        ),
+        var(--background);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       BACKGROUND GRID
+    ========================== */
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      background-image:
+
+        linear-gradient(
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black 20%,
+          black 80%,
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       GLOW
+    ========================== */
+
+    .glow {
+
+      position: fixed;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      filter: blur(150px);
+
+      opacity: 0.035;
+
+      pointer-events: none;
+    }
+
+    .glow-one {
+      top: -250px;
+      left: -200px;
+    }
+
+    .glow-two {
+      right: -220px;
+      bottom: -280px;
+    }
+
+
+    /* =========================
+       CONTAINER
+    ========================== */
+
+    .container {
+
+      width: min(900px, 92%);
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    /* =========================
+       CARD
+    ========================== */
+
+    .card {
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      padding: 55px;
+
+      backdrop-filter: blur(18px);
+
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.55),
+        inset 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 50px;
+    }
+
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-weight: 600;
+
+      letter-spacing: -0.02em;
+    }
+
+
+    .logo {
+
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+
+      place
